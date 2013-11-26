@@ -16,7 +16,7 @@ namespace SquareAuth.Controllers
         public ActionResult Index()
         {
             FourSquareClient client = new FourSquareClient("client_id", "client_secret");
-            AuthenticationResult result = client.VerifyAuthentication(this.HttpContext, new Uri("http://localhost:56709/Login"));
+            AuthenticationResult result = client.VerifyAuthentication(this.HttpContext, new Uri(Request.Url.AbsoluteUri));
             if (!result.IsSuccessful)
                 client.RequestAuthentication(this.HttpContext,new Uri(Request.Url.AbsoluteUri));
             else{
