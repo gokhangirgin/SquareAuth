@@ -83,8 +83,8 @@ namespace DotNetOpenAuth.AspNet.Clients
             using (Stream stream = response.GetResponseStream())
             using (StreamReader sr = new StreamReader(stream))
             {
-                //basic user info through access_token request that maps to extraData
-                //http://instagram.com/developer/authentication/
+                //{ "access_token":"xxx" }
+                //https://developer.foursquare.com/overview/auth
                 dynamic obj = JsonConvert.DeserializeObject<dynamic>(sr.ReadToEnd());
                 _userData.Add("access_token", Convert.ToString(obj.access_token));
             }
